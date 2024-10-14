@@ -1,0 +1,17 @@
+{
+    "name": "dankkomcg/php-logger",
+    "description": "A simple PHP log library",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Dankkomcg\\Logger\\": "src"
+        }
+    },
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    }
+}
