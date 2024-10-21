@@ -33,6 +33,7 @@ trait ConsoleLoggable {
      *
      * @param Logger $logHandler
      * @return void
+     * @throws ConsoleLogTypeException
      */
     public function setLogger(Logger $logHandler): void {
 
