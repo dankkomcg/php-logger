@@ -4,7 +4,6 @@ namespace Dankkomcg\Logger\Types\Console;
 
 use Dankkomcg\Logger\Exceptions\IncorrectColourValuesException;
 use Dankkomcg\Logger\Exceptions\OneConsoleColourIsNotDefinedException;
-use Dankkomcg\Logger\Traits\Writable;
 
 class ColourConsoleLogger extends ConsoleLogger {
 
@@ -16,15 +15,12 @@ class ColourConsoleLogger extends ConsoleLogger {
     /**
      * @var array
      */
-    private array $availableColoursLogLevels;
-
-    /**
-     * @var array
-     */
-    private array $coloursLogLevels;
+    protected array $availableColoursLogLevels;
 
     /**
      * @param array $customColoursLogLevels
+     * @throws IncorrectColourValuesException
+     * @throws OneConsoleColourIsNotDefinedException
      */
     public function __construct(array $customColoursLogLevels = []) {
 
@@ -54,7 +50,10 @@ class ColourConsoleLogger extends ConsoleLogger {
     }
 
     /**
+     * @param array $customLogLevelColors
      * @return void
+     * @throws IncorrectColourValuesException
+     * @throws OneConsoleColourIsNotDefinedException
      */
     private function initializeLogLevels(array $customLogLevelColors = []): void
     {
@@ -83,6 +82,7 @@ class ColourConsoleLogger extends ConsoleLogger {
     /**
      * @param array $customLogLevelColors
      * @return void
+     * @throws IncorrectColourValuesException
      */
     private function checkIfLogLevelsAreDefined(array $customLogLevelColors): void
     {
@@ -105,6 +105,7 @@ class ColourConsoleLogger extends ConsoleLogger {
      *
      * @param array $customLogLevelColors
      * @return void
+     * @throws OneConsoleColourIsNotDefinedException
      */
     private function checkIfColoursLogLevelsExists(array $customLogLevelColors): void
     {
@@ -128,10 +129,11 @@ class ColourConsoleLogger extends ConsoleLogger {
     }
 
     /**
-     * Checks if onlye one colour is not defined to specify the info to the client
+     * Checks if only one colour is not defined to specify the info to the client
      *
      * @param array $coloursArrayDiff
-     * @return array
+     * @return void
+     * @throws OneConsoleColourIsNotDefinedException
      */
     private function checkIfOnlyOneColourIsNoAvailable(array $coloursArrayDiff): void
     {
