@@ -1,0 +1,1 @@
+{"version":1,"defects":{"SimpleLoggerTest::testConsoleLogging":4,"SimpleLoggerTest::testFileLogging":4},"times":{"SimpleLoggerTest::testConsoleLogging":0.001,"SimpleLoggerTest::testFileLogging":0.001,"ConsoleLoggerTest::testConsoleLogging":0.001,"FileLoggerTest::testFileLogging":0.001}}
