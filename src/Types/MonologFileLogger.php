@@ -3,14 +3,26 @@
 namespace Dankkomcg\Logger\Types;
 
 use Dankkomcg\Logger\Logger;
+use Dankkomcg\Logger\Traits\Writable;
+use Dankkomcg\Logger\Types\Console\ConsoleLogger;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger as MonologLogger;
 
-class FileLogger implements Logger
+class MonologFileLogger implements Logger
 {
+
+    use Writable;
+
+    /**
+     * @var MonologLogger
+     */
     private MonologLogger $streamFileLogger;
 
-    public function __construct(string $filename, string $fileLoggerName = 'sync') {
+    /**
+     * @param string $filename
+     * @param string $fileLoggerName
+     */
+    public function __construct(string $filename, string $fileLoggerName) {
 
         $this->streamFileLogger     = new MonologLogger($fileLoggerName);
 
@@ -22,32 +34,7 @@ class FileLogger implements Logger
 
     }
 
-    public function info(string $message): void
-    {
-        $this->write($message, 'info');
-    }
-
-    public function warning(string $message): void
-    {
-        $this->write($message, 'warning');
-    }
-
-    public function error(string $message): void
-    {
-        $this->write($message, 'error');
-    }
-
-    public function success(string $message): void
-    {
-        $this->write($message, 'success');
-    }
-
-    public function debug(string $message): void
-    {
-        $this->write($message);
-    }
-
-    public function write(string $message, string $level = 'info'): void
+    protected function write(string $message, string $level = 'info'): void
     {
         $logLevel = $this->mapLevelToMonolog($level);
         $this->streamFileLogger->log($logLevel, "[$level] $message");
@@ -62,10 +49,10 @@ class FileLogger implements Logger
     private function mapLevelToMonolog(string $level): int {
 
         $map = [
-            'info' => MonologLogger::INFO,
+            'info'    => MonologLogger::INFO,
             'success' => MonologLogger::INFO,
             'warning' => MonologLogger::WARNING,
-            'error' => MonologLogger::ERROR,
+            'error'   => MonologLogger::ERROR,
         ];
 
         return $map[$level] ?? MonologLogger::INFO;

@@ -3,42 +3,27 @@
 namespace Dankkomcg\Logger\Types;
 
 use Dankkomcg\Logger\Logger;
+use Dankkomcg\Logger\Traits\Writable;
+use Dankkomcg\Logger\Types\Console\ConsoleLogger;
 
-class CompositeLogger implements Logger
-{
+class CompositeLogger implements Logger {
+
+    use Writable;
+
+    /**
+     * @var array
+     */
     private array $loggers = [];
 
-    public function addLogger(Logger $logger): void
-    {
+    /**
+     * @param Logger $logger
+     * @return void
+     */
+    public function addLogger(Logger $logger): void {
         $this->loggers[] = $logger;
     }
 
-    public function info(string $message): void
-    {
-        $this->write($message, 'info');
-    }
-
-    public function warning(string $message): void
-    {
-        $this->write($message, 'warning');
-    }
-
-    public function error(string $message): void
-    {
-        $this->write($message, 'error');
-    }
-
-    public function success(string $message): void
-    {
-        $this->write($message, 'success');
-    }
-
-    public function debug(string $message): void
-    {
-        $this->write($message);
-    }
-
-    public function write(string $message, string $level = 'info'): void
+    protected function write(string $message, string $level): void
     {
         foreach ($this->loggers as $logger) {
             $logger->write($message, $level);

@@ -28,7 +28,7 @@ composer require dankkomcg/php-logger
 ```php
 use Dankkomcg\Traits\Loggable;
 use Dankkomcg\Logger;
-use Dankkomcg\Loggers\ConsoleLogger;
+use Dankkomcg\Loggers\SimpleConsoleLogHandler;
 
 class YourClass
 {
@@ -36,7 +36,7 @@ class YourClass
 
     public function __construct()
     {
-        $this->setLogger(new Logger(new ConsoleLogger()));
+        $this->setLogger(new Logger(new SimpleConsoleLogHandler()));
     }
 
     public function doSomething()
@@ -61,10 +61,10 @@ $logger->log('This message will be written to the file', 'info');
 
 ```php
 use Dankkomcg\Logger;
-use Dankkomcg\Loggers\ConsoleLogger;
+use Dankkomcg\Loggers\SimpleConsoleLogHandler;
 use Dankkomcg\Loggers\FileLogger;
 
-$logger = new Logger(new ConsoleLogger());
+$logger = new Logger(new SimpleConsoleLogHandler());
 $logger->addLogger(new FileLogger('/path/to/your/logfile.log'));
 
 $logger->log('This message will be logged to both console and file', 'warning');

@@ -7,13 +7,6 @@ interface Logger
 
     /**
      * @param string $message
-     * @param string $level
-     * @return void
-     */
-    public function write(string $message, string $level = 'info'): void;
-
-    /**
-     * @param string $message
      * @return void
      */
     public function info(string $message): void;
