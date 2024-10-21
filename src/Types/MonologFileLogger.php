@@ -4,7 +4,6 @@ namespace Dankkomcg\Logger\Types;
 
 use Dankkomcg\Logger\Logger;
 use Dankkomcg\Logger\Traits\Writable;
-use Dankkomcg\Logger\Types\Console\ConsoleLogger;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger as MonologLogger;
 
@@ -24,7 +23,7 @@ class MonologFileLogger implements Logger
      */
     public function __construct(string $filename, string $fileLoggerName) {
 
-        $this->streamFileLogger     = new MonologLogger($fileLoggerName);
+        $this->streamFileLogger = new MonologLogger($fileLoggerName);
 
         $this->streamFileLogger->pushHandler(
             new StreamHandler(
@@ -34,7 +33,7 @@ class MonologFileLogger implements Logger
 
     }
 
-    protected function write(string $message, string $level = 'info'): void
+    public function write(string $message, string $level): void
     {
         $logLevel = $this->mapLevelToMonolog($level);
         $this->streamFileLogger->log($logLevel, "[$level] $message");

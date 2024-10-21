@@ -2,8 +2,6 @@
 
 use Dankkomcg\Logger\Traits\Loggable;
 use PHPUnit\Framework\TestCase;
-use Dankkomcg\Logger\Traits\Console\ConsoleLoggable;
-use Dankkomcg\Logger\Types\Console\LightColourConsoleLogger;
 use Dankkomcg\Logger\Types\MonologFileLogger;
 
 final class FileLoggerTest extends TestCase {
@@ -20,6 +18,7 @@ final class FileLoggerTest extends TestCase {
             {
                 $this->logger()->info($message);
             }
+
         };
 
         $test->setLogger(

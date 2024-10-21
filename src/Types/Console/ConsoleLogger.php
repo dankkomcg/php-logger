@@ -9,11 +9,4 @@ abstract class ConsoleLogger implements Logger {
 
     use Writable;
 
-    /**
-     * @param string $message
-     * @param string $level
-     * @return void
-     */
-    abstract protected function write(string $message, string $level): void;
-
 }

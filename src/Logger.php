@@ -34,4 +34,12 @@ interface Logger
      * @return void
      */
     public function debug(string $message): void;
+
+    /**
+     * @param string $message
+     * @param string $level
+     * @return void
+     */
+    public function write(string $message, string $level): void;
+
 }

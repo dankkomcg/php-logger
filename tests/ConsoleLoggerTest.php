@@ -1,13 +1,17 @@
 <?php
 
-use Dankkomcg\Logger\Traits\Loggable;
+use Dankkomcg\Logger\Exceptions\IncorrectColourValuesException;
+use Dankkomcg\Logger\Exceptions\OneConsoleColourIsNotDefinedException;
 use PHPUnit\Framework\TestCase;
 use Dankkomcg\Logger\Traits\Console\ConsoleLoggable;
 use Dankkomcg\Logger\Types\Console\LightColourConsoleLogger;
-use Dankkomcg\Logger\Types\MonologFileLogger;
 
 final class ConsoleLoggerTest extends TestCase
 {
+    /**
+     * @throws OneConsoleColourIsNotDefinedException
+     * @throws IncorrectColourValuesException
+     */
     public function testConsoleLogging(): void
     {
         $test = new class {

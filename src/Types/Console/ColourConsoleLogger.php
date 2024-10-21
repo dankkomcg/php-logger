@@ -154,7 +154,7 @@ class ColourConsoleLogger extends ConsoleLogger {
      * @param string $level
      * @return void
      */
-    protected function write(string $message, string $level): void
+    public function write(string $message, string $level): void
     {
         $color = $this->availableLogLevels[$level] ?? 'white';
         $colorCode = $this->getColorCode($color);

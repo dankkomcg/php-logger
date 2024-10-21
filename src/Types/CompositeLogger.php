@@ -4,7 +4,6 @@ namespace Dankkomcg\Logger\Types;
 
 use Dankkomcg\Logger\Logger;
 use Dankkomcg\Logger\Traits\Writable;
-use Dankkomcg\Logger\Types\Console\ConsoleLogger;
 
 class CompositeLogger implements Logger {
 
@@ -23,7 +22,7 @@ class CompositeLogger implements Logger {
         $this->loggers[] = $logger;
     }
 
-    protected function write(string $message, string $level): void
+    public function write(string $message, string $level): void
     {
         foreach ($this->loggers as $logger) {
             $logger->write($message, $level);

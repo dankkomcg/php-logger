@@ -144,7 +144,7 @@ These traits are designed to be easily integrated into your existing classes, pr
 To run tests, ensure you have PHPUnit installed. Execute the following command:
 
 ```bash
-./vendor/bin/phpunit
+./vendor/bin/phpunit --testdox tests
 ```
 
 ## Requirements

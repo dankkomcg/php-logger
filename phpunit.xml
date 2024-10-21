@@ -5,7 +5,7 @@
          colors="true">
 
     <testsuites>
-        <testsuite name="Project PHP Logger">
+        <testsuite name="PHP Logger tests">
             <directory>./tests</directory>
             <exclude>
                 <directory>./tests/Project</directory>
@@ -20,7 +20,7 @@
     </coverage>
 
     <logging>
-        <log type="coverage-html" target="build/coverage" />
+        <testdoxHtml outputFile="build/testdox.html"/>
     </logging>
 
 </phpunit>
